@@ -1,0 +1,26 @@
+pt = input('\nEnter set of points: ');
+
+data1 = pt(:,1);
+data2 = pt(:,2);
+
+s = length(data1);
+
+if s <= 10
+    deg = s - 1;
+elseif s > 10
+    deg = 10;
+end
+
+e = zeros(1,deg);
+i = 1;
+
+while i<=deg
+    cf = polyfit(data1,data2,1);
+    f = polyval(cf,data1);
+    e(i) = norm(data2-f);
+    i = i + 1;
+end
+
+[~,n] = min(e);
+coeff = polyfit(data1,data2,1)
+    
